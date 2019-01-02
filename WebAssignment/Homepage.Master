@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="Stylesheets" runat="server">
-        <link rel="stylesheet" href="Homepage.css" type="text/css" />
+        <link rel="stylesheet" href="/Homepage.css" type="text/css" />
     </asp:ContentPlaceHolder>
         <script src="ckeditor/ckeditor.js"></script>
       <script type="text/javascript" src='<%= ResolveClientUrl("~/JavaScript/jsScript.js") %>'></script>
@@ -17,14 +17,14 @@
             <nav>
                 <ul>
                     <li style="float: left;"><a href="#">
-                        <img src="Image/g6white.png" style="height: 50px;" /></a></li>
+                        <img src="/Image/g6white.png" style="height: 50px;" /></a></li>
                     <li><a href="Login.aspx" class="navMenu">Login</a></li>
                     <li><a href="#" class="navMenu">Contact</a></li>
                     <li class="dropdown"><a href="javascript:void(0)" class="navMenu" id="dropdownMenu">Assessment</a>
                         <div class="dropdown-content">
                             <a>Create an Assessment</a>
-                            <a href="CreateQ.aspx"> Create Multiple Choices Assessment</a>
-                            <a href="CreateWritten.aspx">Create Essay or Written Assessment</a>
+                            <a href="Lecturer/CreateQ.aspx"> Create Multiple Choices Assessment</a>
+                            <a href="Lecturer/CreateWritten.aspx">Create Essay or Written Assessment</a>
                         </div>
                     </li>
                     <li><a href="HomepageAnon.aspx" class="navMenu">Home</a></li>
@@ -57,7 +57,7 @@
             </div>
 
             <div style="float: left; text-align: center;">
-                <img src="Image/g6white.png" style="height: 120px;" />
+                <img src="/Image/g6white.png" style="height: 120px;" />
             </div>
 
             <div style="font-size:smaller; width:95%; padding-top:150px; text-align:right;">

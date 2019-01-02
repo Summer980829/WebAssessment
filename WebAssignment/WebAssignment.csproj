@@ -393,8 +393,8 @@
     <Content Include="ckeditor\skins\moono-lisa\images\refresh.png" />
     <Content Include="ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="ckeditor\styles.js" />
-    <Content Include="CreateQ.aspx" />
-    <Content Include="CreateWritten.aspx" />
+    <Content Include="Lecturer\CreateQ.aspx" />
+    <Content Include="Lecturer\CreateWritten.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="Homepage.css" />
     <Content Include="HomepageAnon.aspx" />
@@ -419,18 +419,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateQ.aspx.cs">
+    <Compile Include="Lecturer\CreateQ.aspx.cs">
       <DependentUpon>CreateQ.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CreateQ.aspx.designer.cs">
+    <Compile Include="Lecturer\CreateQ.aspx.designer.cs">
       <DependentUpon>CreateQ.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateWritten.aspx.cs">
+    <Compile Include="Lecturer\CreateWritten.aspx.cs">
       <DependentUpon>CreateWritten.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CreateWritten.aspx.designer.cs">
+    <Compile Include="Lecturer\CreateWritten.aspx.designer.cs">
       <DependentUpon>CreateWritten.aspx</DependentUpon>
     </Compile>
     <Compile Include="FAQ.aspx.cs">
@@ -533,6 +533,7 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Lecturer\Web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
