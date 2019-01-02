@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Data.Entity;
 using System.Data;
 using System.Data.Entity.Core.EntityClient;
+using System.Configuration;
 
 namespace prototype1
 {
@@ -19,13 +20,12 @@ namespace prototype1
         public static EntityConnectionStringBuilder builder = new EntityConnectionStringBuilder(efConnectionString);
         public String regularConnectionString = builder.ProviderConnectionString;
 
+        private String ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //if (IsPostBack)
-            //{
-            //  //  SqlConnection conn = new SqlConnection();
-            //} 
+
             StudentRegister.Visible = false;
             LecturerRegister.Visible = false;
         }
@@ -41,32 +41,11 @@ namespace prototype1
             {
                 LecturerRegister.Visible = true;
                 StudentRegister.Visible = false;
-
-                //if (Roles.RoleExists("Lecturer"))
-                //{
-                //    Roles.AddUserToRole(CreateUserWizard1.UserName, "Lecturer");
-                //}
-                //else
-                //{
-                //    Roles.CreateRole("Lecturer");
-                //    Roles.AddUserToRole(CreateUserWizard1.UserName, "Lecturer");
-                //}
-
             }
             else if (ddlAccType.SelectedValue.Equals("Student"))
             {
                 StudentRegister.Visible = true;
                 LecturerRegister.Visible = false;
-
-                //if (Roles.RoleExists("Student"))
-                //{
-                //    Roles.AddUserToRole(CreateUserWizard1.UserName, "Student");
-                //}
-                //else
-                //{
-                //    Roles.CreateRole("Student");
-                //    Roles.AddUserToRole(CreateUserWizard1.UserName, "Student");
-                //}
             }
             else
             {
@@ -77,29 +56,54 @@ namespace prototype1
 
         protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
         {
-            if (Roles.RoleExists("Lecturer"))
-            {
-                Roles.AddUserToRole(CreateUserWizard1.UserName, "Lecturer");
-            }
-            else
-            {
+            if (!Roles.RoleExists("Lecturer"))
                 Roles.CreateRole("Lecturer");
-                Roles.AddUserToRole(CreateUserWizard1.UserName, "Lecturer");
-            }
 
+            Roles.AddUserToRole(CreateUserWizard1.UserName, "Lecturer");
+
+            String insertString = "INSERT INTO Lecturer(LecturerID, Name, Faculty, Major) VALUES (@param1, @param2, @param3, @param4)";
+
+            SqlConnection con = new SqlConnection(ConnectionString);
+            SqlCommand cmd = new SqlCommand(insertString, con);
+
+            String createdID = Membership.GetUser((sender as CreateUserWizard).UserName).ProviderUserKey.ToString();
+
+            cmd.Parameters.AddWithValue("@param1", createdID);
+            cmd.Parameters.AddWithValue("@param2", null);
+            cmd.Parameters.AddWithValue("@param3", null);
+            cmd.Parameters.AddWithValue("@param4", null);
+
+            con.Open();
+
+            int a = cmd.ExecuteNonQuery();
+
+            con.Close();
         }
 
         protected void CreateUserWizard2_CreatedUser1(object sender, EventArgs e)
         {
-            if (Roles.RoleExists("Student"))
-            {
-                Roles.AddUserToRole(CreateUserWizard2.UserName, "Student");
-            }
-            else
-            {
+            if (!Roles.RoleExists("Student"))
                 Roles.CreateRole("Student");
-                Roles.AddUserToRole(CreateUserWizard2.UserName, "Student");
-            }
+
+            Roles.AddUserToRole(CreateUserWizard2.UserName, "Student");
+
+            String insertString = "INSERT INTO Student(StudentID, Name, Faculty) VALUES (@param1, @param2, @param3)";
+
+            SqlConnection con = new SqlConnection(ConnectionString);
+            SqlCommand cmd = new SqlCommand(insertString, con);
+
+            String createdID = Membership.GetUser((sender as CreateUserWizard).UserName).ProviderUserKey.ToString();
+
+            cmd.Parameters.AddWithValue("@param1", createdID);
+            cmd.Parameters.AddWithValue("@param2", null);
+            cmd.Parameters.AddWithValue("@param3", null);
+
+
+            con.Open();
+
+            int a = cmd.ExecuteNonQuery();
+
+            con.Close();
         }
     }
 }

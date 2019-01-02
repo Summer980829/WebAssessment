@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WebAssignment.Profile" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Homepage.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WebAssignment.Profile" %>
 
 <asp:content id="Content1" contentplaceholderid="ContentPlaceHolder1" runat="server">
     <style>
@@ -12,6 +12,8 @@
 
 
     <div class="container">
-        Hello
+        UserID&nbsp;&nbsp;&nbsp;&nbsp; : <asp:Label id="lblUserID" runat="server" Text=""></asp:Label><br />
+        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <asp:Label id="lblName" runat="server" Text=""></asp:Label><br />
+        Faculty&nbsp;&nbsp;&nbsp;&nbsp; : <asp:Label id="lblFaculty" runat="server" Text=""></asp:Label><br />
     </div>
 </asp:content>
