@@ -30,7 +30,7 @@
                         </div>
                     </li>
                     <li><a href="/HomepageAnon.aspx" class="navMenu">Home</a></li>
-                    <li id="loginName" runat="server"><a href="#" class="navMenu">
+                    <li id="loginName" runat="server"><a href="/User/Profile.aspx" class="navMenu">
                         <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
                     </a></li>
 
