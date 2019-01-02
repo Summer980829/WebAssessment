@@ -8,8 +8,8 @@
     <asp:ContentPlaceHolder ID="Stylesheets" runat="server">
         <link rel="stylesheet" href="/Homepage.css" type="text/css" />
     </asp:ContentPlaceHolder>
-        <script src="ckeditor/ckeditor.js"></script>
-      <script type="text/javascript" src='<%= ResolveClientUrl("~/JavaScript/jsScript.js") %>'></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src='<%= ResolveClientUrl("~/JavaScript/jsScript.js") %>'></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -18,16 +18,22 @@
                 <ul>
                     <li style="float: left;"><a href="#">
                         <img src="/Image/g6white.png" style="height: 50px;" /></a></li>
-                    <li><a href="Login.aspx" class="navMenu">Login</a></li>
+                    <li>
+                        <asp:LoginStatus ID="LoginStatus1" runat="server" OnLoggingOut="LoginStatus1_LoggingOut" />
+                    </li>
                     <li><a href="#" class="navMenu">Contact</a></li>
                     <li class="dropdown"><a href="javascript:void(0)" class="navMenu" id="dropdownMenu">Assessment</a>
                         <div class="dropdown-content">
                             <a>Create an Assessment</a>
-                            <a href="Lecturer/CreateQ.aspx"> Create Multiple Choices Assessment</a>
-                            <a href="Lecturer/CreateWritten.aspx">Create Essay or Written Assessment</a>
+                            <a href="/Lecturer/CreateQ.aspx">Create Multiple Choices Assessment</a>
+                            <a href="/Lecturer/CreateWritten.aspx">Create Essay or Written Assessment</a>
                         </div>
                     </li>
-                    <li><a href="HomepageAnon.aspx" class="navMenu">Home</a></li>
+                    <li><a href="/HomepageAnon.aspx" class="navMenu">Home</a></li>
+                    <li id="loginName" runat="server"><a href="#" class="navMenu">
+                        <asp:Label ID="lblLoggedUser" runat="server" Text=""></asp:Label>
+                    </a></li>
+
                 </ul>
             </nav>
         </header>
@@ -60,7 +66,7 @@
                 <img src="/Image/g6white.png" style="height: 120px;" />
             </div>
 
-            <div style="font-size:smaller; width:95%; padding-top:150px; text-align:right;">
+            <div style="font-size: smaller; width: 95%; padding-top: 150px; text-align: right;">
                 | Wong Wei Yao, Wong Yueh Ping, Yap Sui Ming, Yeap Lee Zhi BAIT2113 2018
             </div>
         </footer>
